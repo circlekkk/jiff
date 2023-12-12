@@ -1,3 +1,18 @@
+1.git上拉代码
+2.电脑上安装npm和node.js,命令如下：
+sudo yum update
+sudo yum install epel-release
+sudo yum install nodejs
+node -v
+sudo yum install npm
+npm -v
+sudo npm install -g npm
+3.安装 libsodium-wrappers和socket.io
+安装
+npm install libsodium-wrappers socket.io
+验证
+npm list libsodium-wrappers socket.io
+
 # JIFF
 
 [![CircleCI Build Status](https://circleci.com/gh/multiparty/jiff.svg?style=shield)](https://app.circleci.com/pipelines/github/multiparty/jiff)
@@ -39,6 +54,13 @@ const jiffServer = new JIFFServer(http, options);
 http.listen(port, cb);
 ```
 
+[//]: # (首先，您使用require语句从jiff-mpc包中引入了JIFFServer类。这允许您在服务器代码中使用JIFF的功能。)
+
+[//]: # (然后，您创建了一个新的JIFFServer实例，并将其分配给变量jiffServer。这个实例将处理与JIFF相关的所有服务器端逻辑。)
+
+[//]: # (在创建jiffServer实例时，您传递了两个参数：http和options。其中，http是一个HTTP服务器实例，用于处理HTTP请求和响应。options是一个可选的配置对象，用于配置JIFF服务器的各种设置。)
+
+[//]: # (最后，您使用http.listen方法指定服务器应监听的端口号，并在服务器成功启动后调用回调函数cb)
 Similarly, you can require the client module in your node.js clients using:
 ```javascript
 const { JIFFClient } = require('jiff-mpc');
@@ -49,6 +71,12 @@ const jiffClient = new JIFFClient("<server address>", "<computation_id>", <optio
 // perform some computation.
 let shares = jiffClient.share(<secret>);
 ...
+您使用require语句从jiff-mpc包中引入了JIFFClient类。这将允许您在客户端代码中使用JIFF的功能。
+然后，您创建了一个新的JIFFClient实例，并将其分配给变量jiffClient。这个实例将与服务器进行通信，并处理与安全多方计算相关的所有客户端逻辑。
+在创建jiffClient实例时，您传递了三个参数：<server address>、<computation_id>和<options>。其中，<server address>是服务器的地址，用于指定客户端应与哪个服务器进行通信。<computation_id>是一个字符串，用于标识特定的计算。<options>是一个可选的配置对象，用于配置JIFF客户端的各种设置。
+最后，您使用jiffClient.share方法来对一个秘密值进行共享，并将结果存储在变量shares中。这将使用安全多方计算协议来生成秘密值的共享，使得多个参与者可以协同工作来恢复秘密值，而无需显式地交换共享的值。
+
+
 ```
 
 ### Client - Browser
