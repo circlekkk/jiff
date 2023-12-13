@@ -88,21 +88,36 @@ that you set up your web-server to serve this JS file.
 <script src="/dist/jiff-client.js"></script>
 ```
 
+[//]: # (如何在浏览器端使用一个JavaScript捆绑包的说明。它告诉读者如何将一个预构建的JavaScript文件包含在一个<script>标签中，以便使用该文件中的JIFFClient对象。)
+
+[//]: # (src属性指定了预构建的JavaScript文件的路径，即/dist/jiff-client.js。这应该是读者将文件放置在web服务器上的位置。)
+
 Then inside a script tag (and after the page loads), initialize a JIFF object and set up a computation:
 ```javascript
 const jiffClient = new JIFFClient("<server address>", "<computation_id>", <options>);
 ```
+
+[//]: # (在JavaScript中初始化一个JIFF（Jiffy）客户端对象，并设置一个计算)
+
+[//]: # (<server address>替换为实际的服务器地址，<computation_id>替换为实际的计算ID，<options>替换为实际的选项（如果有）)
 The jiffClient object provides methods for sharing, opening, and performing operations on shares.
 
 Alternatively, you can use the same code for both Node.js and browser-based clients, using tools
 such as [browserify](https://browserify.readthedocs.io/en/latest/readme/).
 
+jiffClient对象提供了共享、打开和执行共享操作的方法。
+
+或者，您可以使用相同的代码为Node.js和基于浏览器的客户端，使用工具
+例如browserify。
 To do this, require JIFF from npm in your client JS code normally, e.g. using `const { JIFFClient } = require('jiff-mpc');`,
 and then build your JS code into a bundle using browserify. You can then serve that bundle
 via your web server, and include it in your HTML using script tags.
 
 To see an example of this, look at this [JIFF standalone example repo](https://github.com/multiparty/jiff-standalone-example).
 
+为此，通常需要在客户端 JS 代码中使用 npm 的 JIFF，例如使用 const { JIFFClient } = require('jiff-mpc');，
+然后使用 browserify 将 JS 代码构建到包中。然后，您可以为该包提供服务
+通过您的网络服务器，并使用脚本标记将其包含在您的HTML中。
 ### Extensions
 
 If you want to support more complex data types, such as Fixedpoint numbers or infinite precision integers,
@@ -110,6 +125,12 @@ you should apply the corresponding extension to your client and/or server JIFF i
 
 The extensions can be imported via npm, bundled into web clients via browserify, or included directly via
 script tags into the browser.
+
+如果你想支持更复杂的数据类型，比如定点数或无限精度整数，
+您应该将相应的扩展应用于您的客户端和/或服务器JIFF实例。
+
+扩展可以通过 npm 导入，通过 browserify 打包到 Web 客户端，或者直接通过
+将脚本标签插入浏览器。
 
 ```javascript
 // Server
